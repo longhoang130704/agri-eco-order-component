@@ -8,4 +8,4 @@ có chỗ nào khó hiểu hãy liên lạc Long
 
 cố gắng truyền dữ liệu chuẩn tại vì chưa có ràng buộc dữ liệu mạnh
 
-backend đã được deploy
+backend đã được deploy, api document có trong route http://{ủlServer}/api-docs
