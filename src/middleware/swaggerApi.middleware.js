@@ -15,7 +15,7 @@ const pluginSwaggerApi = (app, port) => {
             },
             servers: [
                 {
-                    url: `http://localhost:8000/`,
+                    url: `https://agri-eco-order-component.onrender.com/`,
                 }
             ],
         },
