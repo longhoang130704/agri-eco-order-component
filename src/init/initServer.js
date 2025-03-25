@@ -3,6 +3,7 @@ import express from 'express';
 
 import { connectMongoDBCloud } from "../configuration/connectMongoDBCloud.js";
 import initBaseMiddleware from "../middleware/base.middleware.js";
+import pluginSwaggerApi from "../middleware/swaggerApi.middleware.js";
 import initRouter from "../route/init.route.js";
 
 dotenv.config();
@@ -13,11 +14,13 @@ const initServer = () => {
     initBaseMiddleware(app, express);
 
     connectMongoDBCloud();
-
+    
     initRouter(app)
+    
+    pluginSwaggerApi(app, port);
 
     app.listen(port, () => {
-        console.log(`user-service is running on http://localhost:${port}`)
+        console.log(`order-service is running on http://localhost:${port}`)
     })
 }
 
