@@ -1,15 +1,8 @@
 import InventoryService from "../service/inventory.service.js";
-import ProductService from "../service/product.service.js";
 
 class InventoryController {
     async create(req, res) {
         try {
-            const validProduct = await ProductService.getById(req.body.productId);
-            if (!validProduct) {
-                return res.status(400).json({
-                    message: "productId không tồn tại, vui lòng kiểm tra lại!"
-                });
-            }
             const inventory = await InventoryService.create(req.body);
             res.status(201).json(inventory);
         } catch (error) {

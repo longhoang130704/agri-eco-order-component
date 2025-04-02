@@ -2,15 +2,16 @@ import Inventory from '../model/inventory.model.js';
 
 class InventoryService {
     async create(data) {
+        console.log(data);
         return await Inventory.create(data);
     }
 
     async getAll() {
-        return await Inventory.find().populate('productId');
+        return await Inventory.find().populate('products.productId');
     }
 
     async getById(id) {
-        return await Inventory.findById(id).populate('productId');
+        return await Inventory.findById(id).populate('products.productId');
     }
 
     async update(id, data) {
