@@ -6,8 +6,7 @@
  *       type: object
  *       required:
  *         - capacity
- *         - productId
- *         - stock_Quantity
+ *         - products
  *         - location
  *       properties:
  *         _id:
@@ -16,23 +15,31 @@
  *         capacity:
  *           type: number
  *           description: Sức chứa của kho
- *         productId:
- *           type: string
- *           description: ID sản phẩm trong kho
- *         stock_Quantity:
- *           type: number
- *           description: Số lượng tồn kho hiện tại
  *         location:
  *           type: string
  *           description: Địa chỉ kho
- *         sold_Quantity:
- *           type: number
- *           description: Số lượng đã bán
- *           default: 0
- *         ReorderQuantity:
- *           type: number
- *           description: Ngưỡng cảnh báo nhập thêm hàng
- *           default: 5
+ *         products:
+ *           type: array
+ *           items:
+ *             type: object
+ *             required:
+ *               - productId
+ *               - stock_Quantity
+ *             properties:
+ *               productId:
+ *                 type: string
+ *                 description: ID sản phẩm trong kho
+ *               stock_Quantity:
+ *                 type: number
+ *                 description: Số lượng tồn kho hiện tại
+ *               sold_Quantity:
+ *                 type: number
+ *                 description: Số lượng đã bán
+ *                 default: 0
+ *               ReorderQuantity:
+ *                 type: number
+ *                 description: Ngưỡng cảnh báo nhập thêm hàng
+ *                 default: 5
  *         createdAt:
  *           type: string
  *           format: date-time
@@ -42,11 +49,16 @@
  *       example:
  *         _id: "6600be4fe6b1ad79c0f3b512"
  *         capacity: 500
- *         productId: "65f83a4dbf8cfe001d455b21"
- *         stock_Quantity: 300
  *         location: "Kho HCM"
- *         sold_Quantity: 50
- *         ReorderQuantity: 5
+ *         products:
+ *           - productId: "65f83a4dbf8cfe001d455b21"
+ *             stock_Quantity: 300
+ *             sold_Quantity: 50
+ *             ReorderQuantity: 5
+ *           - productId: "65f83a4dbf8cfe001d455b22"
+ *             stock_Quantity: 200
+ *             sold_Quantity: 30
+ *             ReorderQuantity: 10
  *         createdAt: "2024-03-26T12:34:56.789Z"
  *         updatedAt: "2024-03-26T12:34:56.789Z"
  */
@@ -72,17 +84,22 @@
  *             type: object
  *             properties:
  *               capacity:
- *                 type: string
- *               productId:
- *                 type: string
- *               stock_Quantity:
- *                 type: string
+ *                 type: number
  *               location:
  *                 type: string
- *               sold_Quantity:
- *                 type: string
- *               ReorderQuantity:
- *                 type: string
+ *               products:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     productId:
+ *                       type: string
+ *                     stock_Quantity:
+ *                       type: number
+ *                     sold_Quantity:
+ *                       type: number
+ *                     ReorderQuantity:
+ *                       type: number
  *     responses:
  *       201:
  *         description: Tạo inventory thành công
